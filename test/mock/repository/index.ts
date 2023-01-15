@@ -19,7 +19,14 @@ export class ProductRepositoryMock implements ProductRepository {
     ];
   }
   async updateOne(dto: UpdateProductDto) {
-    return;
+    return new Product({
+      category: 'any',
+      id: 'testId',
+      name: 'iphone',
+      quantity: 10,
+      status: ProductStatus.ACTIVE,
+      ...dto,
+    });
   }
   async deleteOne(productId: string) {
     return;
