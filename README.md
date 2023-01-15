@@ -1,6 +1,15 @@
 # Como rodar o projeto?
 
+- git clone https://github.com/daviArttur/test_innovationsv.git
+- cd test_innovationsv/
+- npm i
+- npm run build
+- npm start
+- npm test
 
+## Observação
+
+A api do IBGE não estava funcionando no ambiente do node
 
 ## Requisitos do cliente
 
