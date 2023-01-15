@@ -12,6 +12,11 @@ describe('test Product entity', () => {
     });
 
     expect(product).toBeInstanceOf(Product);
+    expect(product.id).toBe('testId');
+    expect(product.category).toBe('electronic');
+    expect(product.quantity).toBe(10);
+    expect(product.name).toBe('Iphone X');
+    expect(product.status).toBe(ProductStatus.ACTIVE);
   });
 
   it('should create a product with status INACTIVE because quantity <= 0', () => {
@@ -21,6 +26,18 @@ describe('test Product entity', () => {
       name: 'Iphone X',
       quantity: 0,
       status: ProductStatus.ACTIVE,
+    });
+
+    expect(product.status).toBe(ProductStatus.INACTIVE);
+  });
+
+  it('should create a product with status INACTIVE with quantity >= 1', () => {
+    const product = new Product({
+      id: 'testId',
+      category: 'electronic',
+      name: 'Iphone X',
+      quantity: 1,
+      status: ProductStatus.INACTIVE,
     });
 
     expect(product.status).toBe(ProductStatus.INACTIVE);
