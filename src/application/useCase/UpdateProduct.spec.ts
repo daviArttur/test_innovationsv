@@ -13,10 +13,11 @@ const dto: UpdateProductDto = {
 
 describe('Test update product useCase', () => {
   it('should update an existent product', async () => {
-    const updateResult = await new UpdateProduct(
-      new ProductRepositoryMock(),
-    ).update(dto);
+    const repo = new ProductRepositoryMock();
+    const repoSpy = jest.spyOn(repo, 'updateOne');
+    const updateResult = await new UpdateProduct(repo).update(dto);
 
+    expect(repoSpy).toHaveBeenCalledTimes(1);
     expect(updateResult).toBeInstanceOf(Product);
     expect(updateResult.category).toBe(dto.category);
     expect(updateResult.name).toBe(dto.name);
