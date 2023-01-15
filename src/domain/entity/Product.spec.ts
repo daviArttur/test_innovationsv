@@ -13,4 +13,16 @@ describe('test Product entity', () => {
 
     expect(product).toBeInstanceOf(Product);
   });
+
+  it('should create a product with status INACTIVE because quantity <= 0', () => {
+    const product = new Product({
+      id: 'testId',
+      category: 'electronic',
+      name: 'Iphone X',
+      quantity: 0,
+      status: ProductStatus.ACTIVE,
+    });
+
+    expect(product.status).toBe(ProductStatus.INACTIVE);
+  });
 });
