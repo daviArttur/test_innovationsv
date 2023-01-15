@@ -17,12 +17,21 @@ describe('test Product entity', () => {
       status: ProductStatus.ACTIVE,
     });
 
+    const dates = {
+      createdAt: new Date(),
+      deletedAt: new Date(),
+      updatedAt: new Date(),
+    };
+
+    product.setDates = dates;
+
     expect(product).toBeInstanceOf(Product);
     expect(product.id).toBe(ProductMock.id);
     expect(product.category).toBe(ProductMock.category);
     expect(product.quantity).toBe(10);
     expect(product.name).toBe(ProductMock.name);
     expect(product.status).toBe(ProductStatus.ACTIVE);
+    expect(product.getDates).toEqual(dates);
   });
 
   it('should create a product with status INACTIVE because quantity <= 0', () => {
