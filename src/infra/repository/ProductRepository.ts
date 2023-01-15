@@ -21,10 +21,7 @@ export class ProductRepositoryInfra implements ProductRepository {
       });
       return;
     } catch (err) {
-      throw new HttpException(
-        'Não foi possivél concluir essa ação no momento, estamos trabalhando para resolver',
-        500,
-      );
+      this.throw();
     }
   }
 
@@ -35,10 +32,7 @@ export class ProductRepositoryInfra implements ProductRepository {
 
       return query;
     } catch (err) {
-      throw new HttpException(
-        'Não foi possivél concluir essa ação no momento, estamos trabalhando para resolver',
-        500,
-      );
+      this.throw();
     }
   }
 
@@ -50,10 +44,7 @@ export class ProductRepositoryInfra implements ProductRepository {
         },
       });
     } catch (err) {
-      throw new HttpException(
-        'Não foi possivél concluir essa ação no momento, estamos trabalhando para resolver',
-        500,
-      );
+      this.throw();
     }
   }
 
@@ -69,10 +60,7 @@ export class ProductRepositoryInfra implements ProductRepository {
         },
       });
     } catch (err) {
-      throw new HttpException(
-        'Não foi possivél concluir essa ação no momento, estamos trabalhando para resolver',
-        500,
-      );
+      this.throw();
     }
   }
 
@@ -95,10 +83,14 @@ export class ProductRepositoryInfra implements ProductRepository {
         status: query.status as ProductStatus,
       });
     } catch (err) {
-      throw new HttpException(
-        'Não foi possivél concluir essa ação no momento, estamos trabalhando para resolver',
-        500,
-      );
+      this.throw();
     }
+  }
+
+  private throw() {
+    throw new HttpException(
+      'Não foi possivél concluir essa ação no momento, estamos trabalhando para resolver',
+      500,
+    );
   }
 }
