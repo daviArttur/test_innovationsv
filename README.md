@@ -9,7 +9,10 @@
 
 ## Observação
 
-A api do IBGE não estava funcionando no ambiente do node
+Utilizei um arquivo SQLITE para armazenar os dados, então não precisa fazer
+configurações extras para o banco de dados.
+
+A api do IBGE não estava funcionando no ambiente do node.
 
 ## Requisitos do cliente
 
