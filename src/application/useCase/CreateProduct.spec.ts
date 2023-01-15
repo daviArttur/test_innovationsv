@@ -1,47 +1,26 @@
 import { Product } from 'src/domain/entity/Product';
-import { ProductStatus } from 'src/domain/interface';
-import { UUIDAdapter } from 'src/infra/adapter/UUIDAdapter';
+import { createProductDtoMock } from 'test/mock/dto/CreateProduct.dto';
 import { ProductRepositoryMock } from 'test/mock/repository';
 import { DuplicatedProductNameError } from '../errors/DuplicatedProductNameError';
-import { IdService } from '../service/IdService';
 import { CreateProduct } from './CreateProduct';
 
 describe('test CreateProduct useCase', () => {
   it('should create a Product', async () => {
-    const dto = {
-      category: 'any',
-      id: 'testId',
-      name: 'iphone',
-      quantity: 10,
-      status: ProductStatus.ACTIVE,
-    };
-
     const newProduct = await new CreateProduct(
-      dto,
+      createProductDtoMock,
       new ProductRepositoryMock(),
-      new IdService(new UUIDAdapter()),
     ).exec();
 
     expect(newProduct).toBeInstanceOf(Product);
   });
 
   it('should throw error when create product', async () => {
-    const dto = {
-      category: 'any',
-      id: 'testId',
-      name: '',
-      quantity: 10,
-      status: ProductStatus.ACTIVE,
-    };
+    const dto = { ...createProductDtoMock, name: '' };
 
     let error: DuplicatedProductNameError;
 
     try {
-      await new CreateProduct(
-        dto,
-        new ProductRepositoryMock(),
-        new IdService(new UUIDAdapter()),
-      ).exec();
+      await new CreateProduct(dto, new ProductRepositoryMock()).exec();
     } catch (err) {
       error = err;
     }
