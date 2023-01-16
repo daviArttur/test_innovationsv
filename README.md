@@ -5,6 +5,8 @@
 - npm i
 - npm run build
 - npm start
+
+### Rodar os testes
 - npm test
 
 
