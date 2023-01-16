@@ -17,6 +17,8 @@ configurações extras para o banco de dados.
 
 A api do IBGE não estava funcionando no ambiente do node então criei um arquivo .JSON local
 
+Se possível gostaria de receber um feedback😁
+
 ## Rotas
 GET      http://localhost:3000/products
 DELETE   http://localhost:3000/products/:productId
