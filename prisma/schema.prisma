@@ -17,3 +17,9 @@ model products {
   updated_at DateTime  @updatedAt
   deleted_at DateTime?
 }
+
+model comments {
+  idDb Int @id @default(autoincrement())
+  id String
+  content String
+}
